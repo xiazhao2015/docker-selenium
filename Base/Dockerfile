@@ -15,8 +15,8 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/a
 # Timezone settings
 # Possible alternative: https://github.com/docker/docker/issues/3359#issuecomment-32150214
 #===================
-RUN echo "Asia/Shanghai" > /etc/timezone
-RUN dpkg-reconfigure --frontend noninteractive tzdata
+#RUN echo "Asia/Shanghai" > /etc/timezone
+#RUN dpkg-reconfigure --frontend noninteractive tzdata
 
 #========================
 # Miscellaneous packages
