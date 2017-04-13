@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/base:3.3.1-arsenic
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM baozhida/selenium-base:3.3.1
+MAINTAINER baozihda <baozihda88@126.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -33,6 +33,6 @@ ENV SCREEN_HEIGHT 1020
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
-USER seluser
+USER uiauto
 
 CMD ["/opt/bin/entry_point.sh"]
