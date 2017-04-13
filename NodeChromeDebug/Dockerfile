@@ -17,30 +17,6 @@ RUN apt-get update -qqy \
   && mkdir -p /root/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
 
-#=================
-# Locale settings
-#=================
-ENV LANGUAGE zh_CN.UTF-8
-ENV LANG zh_CN.UTF-8
-RUN locale-gen zh_CN.UTF-8 \
-  && dpkg-reconfigure --frontend noninteractive locales \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    language-pack-zh-hans \
-&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-#=======
-# Fonts
-#=======
-RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    fonts-ipafont-gothic \
-    xfonts-100dpi \
-    xfonts-75dpi \
-    xfonts-cyrillic \
-    xfonts-scalable \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
 #=========
 # fluxbox
 # A fast, lightweight and responsive window manager
