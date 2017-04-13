@@ -23,11 +23,12 @@ RUN wget -q -O - https://raw.githubusercontent.com/baozhida/docker-selenium/mast
 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list 
 
-RUN apt-get update -qqy \
-  && apt-get -qqy install \
-    google-chrome-stable \
-  && rm /etc/apt/sources.list.d/google-chrome.list \
-&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+RUN wget --no-verbose -O /tmp/google-chrome-stable.deb https://raw.githubusercontent.com/baozhida/docker-selenium/blob/master/NodeChrome/chrome/google-chrome-stable_current_amd64.deb \
+   && cd /tmp \
+   && sudo dpkg -i google-chrome-stable.deb \
+   && sudo apt-get install google-chrome \
+   && rm /etc/apt/sources.list.d/google-chrome.list \
+   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #==================
 # Chrome webdriver
