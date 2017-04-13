@@ -8,13 +8,9 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/a
   && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 
-#===================
-# Timezone settings
-# Possible alternative: https://github.com/docker/docker/issues/3359#issuecomment-32150214
-#===================
-# RUN echo "Asia/ShangHai" > /etc/timezone && sudo dpkg-reconfigure --frontend noninteractive tzdata
-
+ 
 #========================
+# 安装基础软件
 # Miscellaneous packages
 # Includes minimal runtime used for executing non GUI Java programs
 #========================
@@ -24,10 +20,36 @@ RUN apt-get update -qqy \
     ca-certificates \
     openjdk-8-jre-headless \
     sudo \
+    curl \
     unzip \
     wget \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
+
+# 配置中文语言
+ENV LANGUAGE zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8
+ENV LC_ALL=zh_CN.UTF-8
+RUN /usr/share/locales/install-language-pack zh_CN \
+  && locale-gen zh_CN.UTF-8 \
+  && dpkg-reconfigure --frontend noninteractive locales \
+  && apt-get -qqy --no-install-recommends install language-pack-zh-hans
+
+# 安装基本字体
+RUN apt-get -qqy --no-install-recommends install \
+    fonts-ipafont-gothic \
+    xfonts-100dpi \
+    xfonts-75dpi \
+    xfonts-cyrillic \
+    xfonts-scalable
+
+# 安装文泉驿微米黑字体
+RUN apt-get -qqy install ttf-wqy-microhei \
+  && ln /etc/fonts/conf.d/65-wqy-microhei.conf /etc/fonts/conf.d/69-language-selector-zh-cn.conf
+
+# 设置时区
+RUN echo "Asia/Shanghai" | tee /etc/timezone \
+  && dpkg-reconfigure --frontend noninteractive tzdata
 
 #==========
 # Selenium
