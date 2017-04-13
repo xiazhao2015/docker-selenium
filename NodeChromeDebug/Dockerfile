@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/node-chrome:3.3.0
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM selenium/node-chrome:3.3.1
+MAINTAINER baozihda <baozihda88@126.com>
 
 USER root
 
@@ -20,14 +20,14 @@ RUN apt-get update -qqy \
 #=================
 # Locale settings
 #=================
-ENV LANGUAGE en_US.UTF-8
-ENV LANG en_US.UTF-8
-RUN locale-gen en_US.UTF-8 \
+ENV LANGUAGE zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8
+RUN locale-gen zh_CN.UTF-8 \
   && dpkg-reconfigure --frontend noninteractive locales \
   && apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
-    language-pack-en \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+    language-pack-zh-hans \
+&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #=======
 # Fonts
