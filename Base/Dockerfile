@@ -39,7 +39,7 @@ RUN  mkdir -p /opt/selenium \
 #========================================
 # Add normal user with passwordless sudo
 #========================================
-RUN sudo useradd seluser --shell /bin/bash --create-home \
-  && sudo usermod -a -G sudo seluser \
+RUN sudo useradd uiauto --shell /bin/bash --create-home \
+  && sudo usermod -a -G sudo uiauto \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'uiauto:secret' | chpasswd
