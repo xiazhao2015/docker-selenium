@@ -19,7 +19,7 @@ USER root
 #============================================
 # ARG CHROME_VERSION="google-chrome-stable"
 ARG CHROME_VERSION="google-chrome-stable"
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+RUN wget -q -O - https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/linux_signing_key.pub | apt-key add - 
 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list 
 
@@ -33,7 +33,7 @@ RUN apt-get update -qqy \
 # Chrome webdriver
 #==================
 ARG CHROME_DRIVER_VERSION=2.29
-RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
+RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://raw.githubusercontent.com/baozhida/docker-selenium/blob/master/NodeChrome/chromedriver_linux64_$CHROME_DRIVER_VERSION.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
   && rm /tmp/chromedriver_linux64.zip \
