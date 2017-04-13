@@ -8,19 +8,19 @@ MAINTAINER baozihda <baozihda88@126.com>
 RUN  echo "deb http://archive.ubuntu.com/ubuntu trusty main universe\n" > /etc/apt/sources.list \
 && echo "deb http://archive.ubuntu.com/ubuntu trusty-updates main universe\n" >> /etc/apt/sources.list
 
- 
+# 更新源
+RUN apt-get update -qqy
+
 #========================
 # 安装基础软件
 # Miscellaneous packages
 # Includes minimal runtime used for executing non GUI Java programs
 #========================
-RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
+RUN apt-get -qqy --no-install-recommends install \
     bzip2 \
     ca-certificates \
     openjdk-8-jre-headless \
     sudo \
-    curl \
     unzip \
     wget \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
@@ -48,8 +48,8 @@ RUN apt-get -qqy install ttf-wqy-microhei \
   && ln /etc/fonts/conf.d/65-wqy-microhei.conf /etc/fonts/conf.d/69-language-selector-zh-cn.conf
 
 # 设置时区
-RUN echo "Asia/Shanghai" | tee /etc/timezone \
-  && dpkg-reconfigure --frontend noninteractive tzdata
+#RUN echo "Asia/Shanghai" | tee /etc/timezone \
+#  && dpkg-reconfigure --frontend noninteractive tzdata
 
 #==========
 # Selenium
