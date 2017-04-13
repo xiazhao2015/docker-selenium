@@ -23,7 +23,7 @@ RUN wget -q -O - https://raw.githubusercontent.com/baozhida/docker-selenium/mast
 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list 
 
-RUN wget --no-verbose -O /tmp/google-chrome-stable.deb https://raw.githubusercontent.com/baozhida/docker-selenium/blob/master/NodeChrome/chrome/google-chrome-stable_current_amd64.deb \
+RUN wget --no-verbose -O /tmp/google-chrome-stable.deb https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/chrome/google-chrome-stable_current_amd64.deb \
    && cd /tmp \
    && sudo dpkg -i google-chrome-stable.deb \
    && sudo apt-get install google-chrome \
@@ -34,7 +34,7 @@ RUN wget --no-verbose -O /tmp/google-chrome-stable.deb https://raw.githubusercon
 # Chrome webdriver
 #==================
 ARG CHROME_DRIVER_VERSION=2.29
-RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://raw.githubusercontent.com/baozhida/docker-selenium/blob/master/NodeChrome/chromedriver_linux64_$CHROME_DRIVER_VERSION.zip \
+RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/chromedriver_linux64_$CHROME_DRIVER_VERSION.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
   && rm /tmp/chromedriver_linux64.zip \
