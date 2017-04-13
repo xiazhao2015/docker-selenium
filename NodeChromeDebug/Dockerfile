@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/node-chrome:3.3.1
+FROM baozhida/selenium-node-chrome:3.3.1
 MAINTAINER baozihda <baozihda88@126.com>
 
 USER root
@@ -16,18 +16,6 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && mkdir -p /root/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
-
-#=================
-# Locale settings
-#=================
-ENV LANGUAGE zh_CN.UTF-8
-ENV LANG zh_CN.UTF-8
-RUN locale-gen zh_CN.UTF-8 \
-  && dpkg-reconfigure --frontend noninteractive locales \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    language-pack-zh-hans \
-&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #=======
 # Fonts
