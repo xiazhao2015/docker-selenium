@@ -1,6 +1,9 @@
 FROM ubuntu:16.04
 MAINTAINER baozihda <baozihda88@126.com>
 
+# 使用root用户 
+USER root
+
 #================================================
 # Customize sources for apt-get
 #================================================
