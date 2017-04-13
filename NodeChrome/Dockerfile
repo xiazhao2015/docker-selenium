@@ -49,18 +49,6 @@ ENV NODE_APPLICATION_NAME ""
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config
 
-#=================
-# Locale settings
-#=================
-ENV LANGUAGE zh_CN.UTF-8
-ENV LANG zh_CN.UTF-8
-RUN locale-gen zh_CN.UTF-8 \
-  && dpkg-reconfigure --frontend noninteractive locales \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    language-pack-zh-hans \
-&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
 #=================================
 # Chrome Launch Script Modication
 #=================================
