@@ -12,9 +12,8 @@ RUN  echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/a
 # Timezone settings
 # Possible alternative: https://github.com/docker/docker/issues/3359#issuecomment-32150214
 #===================
-ENV TZ "UTC"
-RUN echo "${TZ}" > /etc/timezone \
-  && dpkg-reconfigure --frontend noninteractive tzdata
+ENV TZ "Asia/ShangHai"
+RUN echo "${TZ}" > /etc/timezone | sudo tee /etc/timezone && sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 #========================
 # Miscellaneous packages
