@@ -6,7 +6,7 @@ USER root
 
 # 使用Ubuntu官方的Apt-get源
 RUN  echo "deb http://archive.ubuntu.com/ubuntu trusty main universe\n" > /etc/apt/sources.list \
-  && echo "deb http://archive.ubuntu.com/ubuntu trusty-updates main universe\n" >> /etc/apt/sources.list
+  && echo "deb http://archive.ubuntu.com/ubuntu trusty-updates main universe\n" >> /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
@@ -43,8 +43,7 @@ RUN echo "Asia/Shanghai" | tee /etc/timezone \
 # Miscellaneous packages
 # Includes minimal runtime used for executing non GUI Java programs
 #========================
-RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
+RUN apt-get -qqy --no-install-recommends install \
     bzip2 \
     ca-certificates \
     openjdk-8-jre-headless \
