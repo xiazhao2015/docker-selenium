@@ -40,15 +40,9 @@ RUN echo "Asia/Shanghai" | tee /etc/timezone \
 # Miscellaneous packages
 # Includes minimal runtime used for executing non GUI Java programs
 #========================
-RUN apt-get -qqy --no-install-recommends install \
-    bzip2 \
-    ca-certificates \
-    openjdk-8-jre-headless \
-    sudo \
-    unzip \
-    wget \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-  && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
+RUN apt-get -qqy --no-install-recommends install bzip2 ca-certificates openjdk-8-jre-headless sudo unzip wget
+RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+RUN sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
 
 #==========
 # 配置Selenium
