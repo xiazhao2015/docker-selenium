@@ -25,13 +25,14 @@ RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker
   && apt-get update -qqy \
   && apt-get -qqy install google-chrome-stable \
   && rm /etc/apt/sources.list.d/google-chrome.list \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*                                                      
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+  && rm hosts
 
 #==================
 # Chrome webdriver
 #==================
 # ARG CHROME_DRIVER_VERSION=2.29
-RUN RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
+RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
   && cp ./hosts /etc/hosts \
   && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip \
   && rm -rf /opt/selenium/chromedriver \
