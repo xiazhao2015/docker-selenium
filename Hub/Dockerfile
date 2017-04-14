@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/base:3.3.1-arsenic
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM selenium/base:3.3.1
+MAINTAINER baozhia <baozhida88@126.com>
 
 #========================
 # Selenium Configuration
@@ -30,9 +30,9 @@ ENV GRID_UNREGISTER_IF_STILL_DOWN_AFTER 30000
 COPY generate_config /opt/selenium/generate_config
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN /opt/selenium/generate_config > /opt/selenium/config.json
-RUN chown -R seluser /opt/selenium
+RUN chown -R uiauto /opt/selenium
 
-USER seluser
+USER uiauto
 
 CMD ["/opt/bin/entry_point.sh"]
 
