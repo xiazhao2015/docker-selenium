@@ -39,7 +39,7 @@ RUN /usr/share/locales/install-language-pack zh_CN \
 
 # 安装基本字体
 RUN apt-get update -qqy
-    &&apt-get -qqy --no-install-recommends install \
+    && apt-get -qqy --no-install-recommends install \
     fonts-ipafont-gothic \
     xfonts-100dpi \
     xfonts-75dpi \
