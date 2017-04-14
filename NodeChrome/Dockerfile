@@ -17,30 +17,28 @@ USER root
 #       latest (equivalent to google-chrome-stable)
 #       google-chrome-beta  (pull latest beta)
 #============================================
-# ARG CHROME_VERSION="google-chrome-stable"
 ARG CHROME_VERSION="google-chrome-stable"
-RUN wget -q -O - https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/linux_signing_key.pub | apt-key add - 
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list 
 
-RUN wget --no-verbose -O /tmp/google-chrome-stable.deb https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/chrome/google-chrome-stable_current_amd64.deb \
-   && cd /tmp \
-   && sudo dpkg -i google-chrome-stable.deb \
-   && sudo apt-get install google-chrome \
-   && rm /etc/apt/sources.list.d/google-chrome.list \
-   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+RUN apt-get update -qqy \
+  && apt-get -qqy install \
+    google-chrome-stable \
+  && rm /etc/apt/sources.list.d/google-chrome.list \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #==================
 # Chrome webdriver
 #==================
 ARG CHROME_DRIVER_VERSION=2.29
-RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/chromedriver_linux64_$CHROME_DRIVER_VERSION.zip \
+RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
   && rm /tmp/chromedriver_linux64.zip \
   && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
   && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+&& ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
 
 #========================
 # Selenium Configuration
