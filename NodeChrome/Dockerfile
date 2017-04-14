@@ -8,6 +8,12 @@ MAINTAINER baozihda <baozihda88@126.com>
 USER root
 
 #============================================
+# 修改host
+#============================================
+RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
+  && cp hosts /etc/hosts
+
+#============================================
 # Google Chrome
 #============================================
 # can specify versions by CHROME_VERSION;
