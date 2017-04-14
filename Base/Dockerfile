@@ -32,13 +32,15 @@ RUN apt-get update -qqy \
 ENV LANGUAGE zh_CN.UTF-8
 ENV LANG zh_CN.UTF-8
 ENV LC_ALL=zh_CN.UTF-8
-RUN /usr/share/locales/install-language-pack zh_CN \
+RUN  apt-get update -qqy \
+  && /usr/share/locales/install-language-pack zh_CN \
   && locale-gen zh_CN.UTF-8 \
   && dpkg-reconfigure --frontend noninteractive locales \
   && apt-get -qqy --no-install-recommends install language-pack-zh-hans
 
 # 安装基本字体
-RUN apt-get -qqy --no-install-recommends install \
+RUN  apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install \
     fonts-ipafont-gothic \
     xfonts-100dpi \
     xfonts-75dpi \
@@ -46,7 +48,8 @@ RUN apt-get -qqy --no-install-recommends install \
     xfonts-scalable
 
 # 安装文泉驿微米黑字体
-RUN apt-get -qqy install ttf-wqy-microhei \
+RUN  apt-get update -qqy \
+  && apt-get -qqy install ttf-wqy-microhei \
   && ln /etc/fonts/conf.d/65-wqy-microhei.conf /etc/fonts/conf.d/69-language-selector-zh-cn.conf
 
 # 设置时区
