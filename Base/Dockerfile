@@ -1,23 +1,32 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER baozihda <baozihda88@126.com>
 
 # 使用root用户 
 USER root
 
 # 使用Ubuntu官方的Apt-get源
-RUN  echo "deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse\n" > /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\n" > /etc/apt/sources.list
+RUN  echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/apt/sources.list \
+  && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
+  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
+  
+#========================
+# Miscellaneous packages
+# Includes minimal runtime used for executing non GUI Java programs
+#========================
+RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install \
+    bzip2 \
+    ca-certificates \
+    openjdk-8-jre-headless \
+    tzdata \
+    sudo \
+    locales \
+    unzip \
+    wget \
+    curl \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+  && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
 
-# 更新源
-RUN apt-get update -qqy
 
 # 配置中文语言
 ENV LANGUAGE zh_CN.UTF-8
@@ -29,7 +38,8 @@ RUN /usr/share/locales/install-language-pack zh_CN \
   && apt-get -qqy --no-install-recommends install language-pack-zh-hans
 
 # 安装基本字体
-RUN apt-get -qqy --no-install-recommends install \
+RUN apt-get update -qqy
+    &&apt-get -qqy --no-install-recommends install \
     fonts-ipafont-gothic \
     xfonts-100dpi \
     xfonts-75dpi \
@@ -43,20 +53,6 @@ RUN apt-get -qqy install ttf-wqy-microhei \
 # 设置时区
 RUN echo "Asia/Shanghai" | tee /etc/timezone \
   && dpkg-reconfigure --frontend noninteractive tzdata
-
-#========================
-# Miscellaneous packages
-# Includes minimal runtime used for executing non GUI Java programs
-#========================
-RUN apt-get -qqy --no-install-recommends install \
-    bzip2 \
-    ca-certificates \
-    openjdk-8-jre-headless \
-    sudo \
-    unzip \
-    wget \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-  && sed -i 's/securerandom\.source=file:\/dev\/random/securerandom\.source=file:\/dev\/urandom/' ./usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/java.security
 
 #==========
 # 配置Selenium
