@@ -30,16 +30,17 @@ RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker
 #==================
 # Chrome webdriver
 #==================
-ARG CHROME_DRIVER_VERSION=2.29
-RUN RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \                               
-  && cp ./hosts /etc/hosts \        
-  && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
+# ARG CHROME_DRIVER_VERSION=2.29
+RUN RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
+  && cp ./hosts /etc/hosts \
+  && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip \
   && rm -rf /opt/selenium/chromedriver \
   && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
   && rm /tmp/chromedriver_linux64.zip \
-  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-2.29 \
+  && chmod 755 /opt/selenium/chromedriver-2.29 \
+  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver \
+  && rm hosts
 
 #========================
 # Selenium Configuration
