@@ -35,4 +35,3 @@ RUN chown -R uiauto /opt/selenium
 USER uiauto
 
 CMD ["/opt/bin/entry_point.sh"]
-
