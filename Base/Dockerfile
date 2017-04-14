@@ -5,8 +5,16 @@ MAINTAINER baozihda <baozihda88@126.com>
 USER root
 
 # 使用Ubuntu官方的Apt-get源
-RUN  echo "deb http://archive.ubuntu.com/ubuntu trusty main universe\n" > /etc/apt/sources.list \
-  && echo "deb http://archive.ubuntu.com/ubuntu trusty-updates main universe\n" >> /etc/apt/sources.list
+RUN  echo "deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse\n" > /etc/apt/sources.list \
+  && echo "deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\n" > /etc/apt/sources.list
 
 # 更新源
 RUN apt-get update -qqy
