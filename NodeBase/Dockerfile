@@ -36,5 +36,5 @@ ENV DISPLAY :99.0
 
 USER uiauto
 
-#CMD ["/opt/bin/entry_point.sh"]
-CMD ["/bin/bash"]
+CMD ["/opt/bin/entry_point.sh"]
+#CMD ["/bin/bash"]
