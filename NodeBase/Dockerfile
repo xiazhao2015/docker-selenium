@@ -19,6 +19,7 @@ RUN apt-get update -qqy \
 #==============================
 # Scripts to run Selenium Node
 #==============================
+RUN mkdir -p /opt/bin
 COPY \
   entry_point.sh \
   functions.sh \
@@ -35,4 +36,5 @@ ENV DISPLAY :99.0
 
 USER uiauto
 
-CMD ["/opt/bin/entry_point.sh"]
+#CMD ["/opt/bin/entry_point.sh"]
+CMD ["/bin/bash"]
