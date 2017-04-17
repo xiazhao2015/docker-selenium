@@ -29,7 +29,9 @@ ENV GRID_UNREGISTER_IF_STILL_DOWN_AFTER 30000
 
 COPY generate_config /opt/selenium/generate_config
 COPY entry_point.sh /opt/bin/entry_point.sh
-RUN /opt/selenium/generate_config > /opt/selenium/config.json
+RUN  chmod +x /opt/selenium/generate_config \
+  && chmod +x /opt/bin/entry_point.sh \
+  && sh /opt/selenium/generate_config > /opt/selenium/config.json
 RUN chown -R uiauto /opt/selenium
 
 USER uiauto
