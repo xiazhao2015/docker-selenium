@@ -10,7 +10,8 @@ echo "
       \"browserName\": \"chrome\",
       \"maxInstances\": $NODE_MAX_INSTANCES,
       \"seleniumProtocol\": \"WebDriver\",
-      \"applicationName\": \"$NODE_APPLICATION_NAME\"
+      \"applicationName\": \"$NODE_APPLICATION_NAME\",
+      \"webdriver.chrome.driver\":\"/usr/bin/chromedriver\"
     }
   ],
   \"proxy\": \"org.openqa.grid.selenium.proxy.DefaultRemoteProxy\",
