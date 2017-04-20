@@ -2,7 +2,7 @@
 
 echo "
 {
-  \"host\": null,
+  \"host\": 192.168.99.100,
   \"port\": 4444,
   \"prioritizer\": null,
   \"capabilityMatcher\": \"org.openqa.grid.internal.utils.DefaultCapabilityMatcher\",
