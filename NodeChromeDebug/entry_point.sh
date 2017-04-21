@@ -42,9 +42,9 @@ sudo -E -i -u uiauto \
   DISPLAY=$DISPLAY \
   xvfb-run -n $SERVERNUM --server-args="-screen 0 $GEOMETRY -ac +extension RANDR" \
   java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
+    -Dwebdriver.chrome.driver=/usr/bin/chromedriver \
     -role node \
     -hub http://$HUB_PORT_4444_TCP_ADDR:$HUB_PORT_4444_TCP_PORT/grid/register \
-    -Dwebdriver.chrome.driver="/usr/bin/chromedriver" \
     -nodeConfig /opt/selenium/config.json \
     ${SE_OPTS} &
 NODE_PID=$!
