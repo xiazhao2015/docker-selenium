@@ -14,9 +14,9 @@ USER root
 #ARG CHROME_VERSION="57.0.2987.133"
 RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
   && cp ./hosts /etc/hosts \
-  && wget -q http://www.slimjetbrowser.com/chrome/lnx/chrome64_57.0.2987.133.deb \
-  && apt-get update && apt-get -f install --no-install-recommends -qqy \
-  && dpkg -i chrome64_57.0.2987.133.deb
+RUN wget -q http://www.slimjetbrowser.com/chrome/lnx/chrome64_57.0.2987.133.deb
+RUN apt-get update && apt-get -f install --no-install-recommends -qqy
+RUN dpkg -i chrome64_57.0.2987.133.deb
 
 #==================
 # Chrome webdriver
