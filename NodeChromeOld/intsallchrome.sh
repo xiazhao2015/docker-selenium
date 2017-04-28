@@ -6,8 +6,8 @@
 #CHROME_VERSION=51.0.2704.84
 #CHROME_VERSION=53.0.2785.116
 #CHROME_VERSION=54.0.2840.71
-#CHROME_VERSION=55.0.2883.75
-CHROME_VERSION=56.0.2924.87
+CHROME_VERSION=55.0.2883.75
+#CHROME_VERSION=56.0.2924.87
 #CHROME_VERSION=57.0.2987.133
 
 #============================================                                                                                                     
