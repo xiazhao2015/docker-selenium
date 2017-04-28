@@ -25,7 +25,7 @@ COPY \
   functions.sh \
   installchrome.sh \
     /opt/bin/
-RUN chmod +x /opt/bin/entry_point.sh
+RUN chmod +x /opt/bin/entry_point.sh && chmod +x /opt/bin/installchrome.sh
 
 #============================
 # Some configuration options
