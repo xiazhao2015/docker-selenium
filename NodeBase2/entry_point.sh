@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/bin/installchrome.sh
+sh /opt/bin/installchrome.sh
 
 source /opt/bin/functions.sh
 /opt/selenium/generate_config > /opt/selenium/config.json
