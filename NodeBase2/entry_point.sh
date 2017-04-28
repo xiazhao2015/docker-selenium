@@ -34,11 +34,11 @@ fi
 SERVERNUM=$(get_server_num)
 
 
-dpkg -i chrome64_57.0.2987.133.deb  >/dev/null  2>&1
+sudo dpkg -i chrome64_57.0.2987.133.deb  >/dev/null  2>&1
 
-apt-get -f install -qqy
+sudo apt-get -f install -qqy
 
-dpkg -i chrome64_57.0.2987.133.deb
+sudo dpkg -i chrome64_57.0.2987.133.deb
 
 rm -f /tmp/.X*lock
 
