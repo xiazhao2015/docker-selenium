@@ -9,6 +9,6 @@ wget -q http://www.slimjetbrowser.com/chrome/lnx/chrome64_${CHROME_VERSION}.deb
 
 dpkg -i chrome64_${CHROME_VERSION}.deb  >/dev/null  2>&1
 
-apt-get -f install -qqy
+apt-get -f install -y
 
 dpkg -i chrome64_${CHROME_VERSION}.deb
