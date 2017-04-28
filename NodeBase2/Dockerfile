@@ -23,6 +23,7 @@ RUN mkdir -p /opt/bin
 COPY \
   entry_point.sh \
   functions.sh \
+  installchrome.sh \
     /opt/bin/
 RUN chmod +x /opt/bin/entry_point.sh
 
@@ -33,13 +34,6 @@ ENV SCREEN_WIDTH 1360
 ENV SCREEN_HEIGHT 1020
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
-
-
-#ARG CHROME_VERSION="57.0.2987.133"
-RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
-  && cp ./hosts /etc/hosts
-RUN cd && wget -q http://www.slimjetbrowser.com/chrome/lnx/chrome64_57.0.2987.133.deb
-
 
 USER uiauto
 
