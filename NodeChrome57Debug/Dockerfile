@@ -6,19 +6,7 @@ FROM baozhida/selenium-node-base:3.3.1
 MAINTAINER baozihda <baozihda88@126.com>
 
 USER root
-                                                                                                                      
-#============================================                                                                                                     
-# 修改host，紧接着下载Google Chrome                                                                                                                             
-#============================================                                                                                                     
-                                                                                                 
-#ARG CHROME_VERSION="57.0.2987.133"
-RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
-  && cp ./hosts /etc/hosts
-RUN cd && wget -q http://www.slimjetbrowser.com/chrome/lnx/chrome64_57.0.2987.133.deb
-RUN dpkg -i chrome64_57.0.2987.133.deb; exit 0
-RUN apt-get -f install -qqy
-RUN dpkg -i chrome64_57.0.2987.133.deb
-
+                                                                                                         
 #==================
 # Chrome webdriver
 #==================
