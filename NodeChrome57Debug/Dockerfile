@@ -6,6 +6,15 @@ FROM baozhida/selenium-node-base:3.3.1
 MAINTAINER baozihda <baozihda88@126.com>
 
 USER root
+
+intsallchrome.sh
+
+#=================================
+# Chrome Launch Script Modication
+#=================================
+COPY intsallchrome.sh /opt/intsallchrome
+RUN chmod +x /opt/intsallchrome
+
                                                                                                          
 #==================
 # Chrome webdriver
