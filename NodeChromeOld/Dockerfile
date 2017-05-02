@@ -18,7 +18,7 @@ RUN sh /opt/intsallchrome
 #==================
 # Chrome webdriver
 #==================
-ARG CHROME_DRIVER_VERSION=2.28
+ARG CHROME_DRIVER_VERSION=2.27
 RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
   && cp ./hosts /etc/hosts \
   && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
@@ -48,7 +48,7 @@ ENV NODE_UNREGISTER_IF_STILL_DOWN_AFTER 60000
 # As integer, maps to "downPollingLimit"
 ENV NODE_DOWN_POLLING_LIMIT 2
 # As string, maps to "applicationName"
-ENV NODE_APPLICATION_NAME ""
+ENV NODE_APPLICATION_NAME "chrome54"
 
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config
