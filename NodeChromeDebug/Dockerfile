@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM baozhida/selenium-node-chromeold:51
+FROM baozhida/selenium-node-chromeold:50
 MAINTAINER baozihda <baozihda88@126.com>
 
 USER root
