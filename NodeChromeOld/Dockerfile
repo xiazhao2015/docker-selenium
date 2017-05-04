@@ -18,7 +18,7 @@ RUN sh /opt/intsallchrome
 #==================
 # Chrome webdriver
 #==================
-ARG CHROME_DRIVER_VERSION=2.26
+ARG CHROME_DRIVER_VERSION=2.24
 RUN wget --no-verbose -O hosts https://raw.githubusercontent.com/baozhida/docker-selenium/master/NodeChrome/hosts \
   && cp ./hosts /etc/hosts \
   && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
