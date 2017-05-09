@@ -10,7 +10,7 @@ USER root
 #=========
 # Firefox
 #=========
-ARG FIREFOX_VERSION=47.0
+ARG FIREFOX_VERSION=41.0
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install firefox \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
@@ -25,14 +25,14 @@ RUN apt-get update -qqy \
 #============
 # GeckoDriver
 #============
-ARG GECKODRIVER_VERSION=0.15.0
-RUN wget --no-verbose -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz \
-  && rm -rf /opt/geckodriver \
-  && tar -C /opt -zxf /tmp/geckodriver.tar.gz \
-  && rm /tmp/geckodriver.tar.gz \
-  && mv /opt/geckodriver /opt/geckodriver-$GECKODRIVER_VERSION \
-  && chmod 755 /opt/geckodriver-$GECKODRIVER_VERSION \
-  && ln -fs /opt/geckodriver-$GECKODRIVER_VERSION /usr/bin/geckodriver
+#ARG GECKODRIVER_VERSION=0.15.0
+#RUN wget --no-verbose -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz \
+#  && rm -rf /opt/geckodriver \
+#  && tar -C /opt -zxf /tmp/geckodriver.tar.gz \
+#  && rm /tmp/geckodriver.tar.gz \
+#  && mv /opt/geckodriver /opt/geckodriver-$GECKODRIVER_VERSION \
+#  && chmod 755 /opt/geckodriver-$GECKODRIVER_VERSION \
+#  && ln -fs /opt/geckodriver-$GECKODRIVER_VERSION /usr/bin/geckodriver
 
 #========================
 # Selenium Configuration
@@ -41,7 +41,7 @@ ENV NODE_MAX_INSTANCES 1
 ENV NODE_MAX_SESSION 1
 ENV NODE_REGISTER_CYCLE 5000
 ENV NODE_PORT 5555
-ENV NODE_APPLICATION_NAME "firefox47"
+ENV NODE_APPLICATION_NAME "firefox41"
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config \
   && chown -R uiauto:uiauto /opt/selenium
