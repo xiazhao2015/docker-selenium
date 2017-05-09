@@ -10,7 +10,7 @@ USER root
 #=========
 # Firefox
 #=========
-ARG FIREFOX_VERSION=51.0
+ARG FIREFOX_VERSION=50.0
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install firefox \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
@@ -41,7 +41,7 @@ ENV NODE_MAX_INSTANCES 1
 ENV NODE_MAX_SESSION 1
 ENV NODE_REGISTER_CYCLE 5000
 ENV NODE_PORT 5555
-ENV NODE_APPLICATION_NAME "firefox51"
+ENV NODE_APPLICATION_NAME "firefox50"
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config \
   && chown -R uiauto:uiauto /opt/selenium
