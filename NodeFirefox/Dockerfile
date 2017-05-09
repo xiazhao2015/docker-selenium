@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/node-base:3.3.1-arsenic
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM selenium/node-base:3.3.1
+MAINTAINER baozhida <baozhida88@126.com>
 
 USER root
 
@@ -41,9 +41,9 @@ ENV NODE_MAX_INSTANCES 1
 ENV NODE_MAX_SESSION 1
 ENV NODE_REGISTER_CYCLE 5000
 ENV NODE_PORT 5555
-ENV NODE_APPLICATION_NAME ""
+ENV NODE_APPLICATION_NAME "firefox52"
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config \
-  && chown -R seluser:seluser /opt/selenium
+  && chown -R uiauto:uiauto /opt/selenium
 
-USER seluser
+USER uiauto
