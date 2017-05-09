@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/node-firefox:3.3.1-arsenic
-MAINTAINER Selenium <selenium-developers@googlegroups.com>
+FROM baozhida/selenium-node-firefox；52
+MAINTAINER baozhida <baozhida88@126.com>
 
 USER root
 
