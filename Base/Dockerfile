@@ -53,7 +53,7 @@ RUN  apt-get update -qqy \
   && ln /etc/fonts/conf.d/65-wqy-microhei.conf /etc/fonts/conf.d/69-language-selector-zh-cn.conf
 
 # 设置时区
-RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime \
+RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   && dpkg-reconfigure --frontend noninteractive tzdata
 
 #==========
