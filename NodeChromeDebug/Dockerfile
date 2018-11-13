@@ -3,7 +3,7 @@
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 FROM baozhida/selenium-node-chrome:3.3.1
-MAINTAINER baozihda <baozihda88@126.com>
+MAINTAINER zhaoxia2
 
 USER root
 

@@ -3,7 +3,7 @@
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 FROM baozhida/selenium-base:3.3.1
-MAINTAINER baozhia <baozhida88@126.com>
+MAINTAINER zhaoxia2
 
 #========================
 # Selenium Configuration
